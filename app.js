@@ -15,9 +15,9 @@ global.connectPool = require('./config/db.js');
   
 // Constants 
 //global.nodeSiteUrl = 'http://192.168.1.151/constructionApp/nodeApi/'; // node  
-global.nodeSiteUrl = 'http://192.168.1.151:8083'; // node  
-global.nodeAdminUrl = 'http://192.168.1.151:8083/admin'; // node  
-global.siteTitle = 'cApp Admin';
+global.nodeSiteUrl = 'http://127.0.0.1:3000'; // node  
+global.nodeAdminUrl = 'http://127.0.0.1:3000/admin'; // node  
+global.siteTitle = 'TWON Admin';
 global.successStatus = 200;
 global.failStatus = 401; 
 global.SessionExpireStatus = 500;  
@@ -26,9 +26,13 @@ global.CURRENCY = '$';
 
 /* Admin section code */
 app.set('view engine', 'ejs');
+
 //app.set('view engine', 'pug') 
 var path = require('path');
 app.set('views', path.join(__dirname, 'views'));  
+
+
+
 app.use(express.static(__dirname +'/public'));  
 var flash = require('express-flash-messages')
 app.use(flash())
@@ -51,7 +55,7 @@ app.get('/', (req, res) => {
 
 var apiRouter = require('./routes/api');
 app.use('/', apiRouter); 
-var server = app.listen(8083, function () { 
+var server = app.listen(3000, function () { 
     console.log("Example app listening at http://192.168.1.151:%s", server.address().port);
 });       
 process.on('uncaughtException', function (err) { 

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
-global.url = 'mongodb://localhost:27017/capp'; 
+global.url = 'mongodb+srv://abdulsittar72:2106010991As@cluster0.gsnbbwq.mongodb.net/test?retryWrites=true&w=majority'; 
 // Connecting to the database
 mongoose.connect(url, {
     useNewUrlParser: true

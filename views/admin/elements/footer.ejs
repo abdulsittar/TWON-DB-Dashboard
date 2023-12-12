@@ -2,8 +2,8 @@
         <div class="footer-inner">
             <div class="footer-content">
                 <span class="bigger-120">
-                    <span class="blue bolder">Construction</span>
-                    Application &copy; 2019-2020
+                    <span class="blue bolder">Social</span>
+                    Application &copy; 2022-2023
                 </span> 
                 &nbsp; &nbsp;
                 <span class="action-buttons">
@@ -47,21 +47,17 @@
   <script src="assets/js/excanvas.min.js"></script>
 <![endif]-->
 
-
-
 <!-- ace scripts -->
 <script src="<%=nodeSiteUrl%>/js/ace-elements.min.js"></script>
 <script src="<%=nodeSiteUrl%>/js/ace.min.js"></script>
  
- 
-
 <!-- inline scripts related to this page -->
 <script type="text/javascript">
     jQuery(function($) {
           
         $('.sparkline').each(function(){
             var $box = $(this).closest('.infobox');
-            var barColor = !$box.hasClass('infobox-dark') ? $box.css('color') : '#FFF';
+            var barColor = !$box.hasClass('infobox-light') ? $box.css('color') : '#FFF';
             $(this).sparkline('html',
                              {
                                 tagValuesAttribute:'data-values',
@@ -72,8 +68,6 @@
         });
     
      
-     
-    
         /////////////////////////////////////
         $(document).one('ajaxloadstart.page', function(e) {
             $tooltip.remove();

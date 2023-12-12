@@ -1,13 +1,12 @@
 var Request = require("request");      
 //var Categories = require.main.require('./models/Categories');   
-var Users = require.main.require('./models/Users');   
+var Users = require.main.require('./models/User');   
 const controller = 'Users'; 
 const module_name = 'Users'; 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const myPlaintextPassword = 's0/\/\P4$$w0rD';
 const someOtherPlaintextPassword = 'not_bacon';
-  
 /** 
  *  list
  *  Purpose: This function is used to show listing of all arecord
@@ -19,17 +18,18 @@ const someOtherPlaintextPassword = 'not_bacon';
 async function list(req, res) { 
 
     res.set('content-type' , 'text/html; charset=mycharset'); 
-    data = {};    
+    allRecord = {};    
     action = 'list'; 
     //const allRecord = await Users.findAll();   
-    const allRecord = await Users.find({}); 
-    res.render('admin/users/list',{
-        page_title:" List",
-        data:allRecord, 
-        controller:controller, 
-        action:action,
-        module_name:module_name
-    });    
+    allRecord = await Users.find({}); 
+    console.log("all users")
+    res.set('content-type' , 'text/html; charset=mycharset'); 
+    //console.log(allRecord)
+    //res.redirect(nodeAdminUrl+'/Users/add');
+    //res.redirect(nodeAdminUrl+'/Users/list');
+    //res.redirect(nodeAdminUrl+'/Users/list', {page_title:" List", data:allRecord, controller:controller, action:action, module_name:module_name});
+    res.render(nodeAdminUrl+'/'+controller+'/list', {page_title:" List", data:allRecord, controller:controller, action:action, module_name:module_name});
+
 };      
 exports.list = list;
  
@@ -121,11 +121,10 @@ async function add(req, res) {
     var data = {};  
     var action = 'add'; 
     var errorData = {};    
+    console.log("I am here");
     if (req.method == "POST") { 
         var input = JSON.parse(JSON.stringify(req.body));  
-        req.checkBody('first_name', 'First name is required').notEmpty();
-        req.checkBody('last_name', 'Last name is required').notEmpty();  
-        req.checkBody('contact_number', 'Mobile number is required').notEmpty(); 
+        req.checkBody('username', 'Username is required').notEmpty();
         req.checkBody('password', 'Password is required').notEmpty(); 
         req.checkBody('email', 'email is required').notEmpty();  
         var errors = req.validationErrors();    
@@ -162,20 +161,30 @@ async function add(req, res) {
             var password = bcrypt.hashSync(input.password, salt);
             input.password = password;    
             
-            const SaveData = new Users(input);
-            var saveResult=   await SaveData.save();   
+            // create new user
+            const newUser = new Users({username: input.username, email: input.email, password: password, });
+
+            // save user and send response
+            const SaveData = await newUser.save();
+            
+            //const SaveData = new Users(input);
+            //var saveResult=   await SaveData.save();   
+            console.log(SaveData);
+            console.log("Result");
             if(saveResult){    
-                req.flash('success', controller+' added successfully.')  
+                req.flash('success', controller+' added successfully.');  
                 res.locals.message = req.flash();  
                 res.set('content-type' , 'text/html; charset=mycharset');  
-                return res.redirect(nodeAdminUrl+'/'+controller+'/list');     
+                return res.redirect(nodeAdminUrl+'/'+controller+'/list');  
+                console.log("Success");  
             }else{
                 req.flash('error', 'Could not save record. Please try again')  
-                res.locals.message = req.flash();  
+                res.locals.message = req.flash(); 
+                console.log("Fail"); 
             }      
         } 
     }   
-    res.render('admin/'+controller+'/add',{page_title:page_title,data:data, errorData:errorData,controller:controller,action:action});    
+    //res.render('admin/'+controller+'/add',{page_title:page_title,data:data, errorData:errorData,controller:controller,action:action});    
 };          
 exports.add = add; 
 

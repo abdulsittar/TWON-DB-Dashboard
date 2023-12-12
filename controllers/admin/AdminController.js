@@ -1,5 +1,5 @@
 var Request = require("request");  
-var Users = require.main.require('./models/Users');         
+var Users = require.main.require('./models/User');         
 const controller = 'admin';
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
@@ -16,12 +16,11 @@ const someOtherPlaintextPassword = 'not_bacon';
 */ 
 async function login(req , res){
 
-    
     const { check, validationResult } = require('express-validator/check');   
     var input = JSON.parse(JSON.stringify(req.body));  
-    req.role_id = 0;
-    req.device_token = '4457544';
-    req.device_type = 'ios'; 
+    //req.role_id = 0;
+    //req.device_token = '4457544';
+    //req.device_type = 'ios'; 
     data = {};
     var action = 'login';
     errorData = {};
@@ -38,11 +37,14 @@ async function login(req , res){
           
         req.checkBody('email', 'Email is required').notEmpty();
         req.checkBody('password', 'Password is required').notEmpty();
-        req.checkBody('role_id', 'Role_id is required').notEmpty(); 
-        req.checkBody('device_token', 'device_token is required').notEmpty(); 
-        req.checkBody('device_type', 'device_type is required').notEmpty();  
-        var errors = req.validationErrors();    
+        //req.checkBody('role_id', 'Role_id is required').notEmpty(); 
+        //req.checkBody('device_token', 'device_token is required').notEmpty(); 
+        //req.checkBody('device_type', 'device_type is required').notEmpty();  
+        var errors = req.validationErrors();   
+        console.log("errors")
+        console.log(errors) 
         if(errors){	  
+
             if(errors.length > 0){
                 errors.forEach(function (errors1) {
                     var field1 = String(errors1.param); 
@@ -63,7 +65,10 @@ async function login(req , res){
             //var salt = bcrypt.genSaltSync(saltRounds);
             //var password = bcrypt.hashSync(input.password, salt);
            // console.log(password);  
-              
+            console.log(email); 
+            console.log("Users"); 
+            console.log(user);
+
             if (user && bcrypt.compareSync(password, user.password)) { 
                 req.session.LoginUser = user;  
                 return res.redirect('Dashboard');  
@@ -77,7 +82,7 @@ async function login(req , res){
 
         } 
  
-    }else{
+    } else {
         res.set('content-type' , 'text/html; charset=mycharset'); 
         res.render('admin/login',{page_title:"Admin - Login",data:data,errorData:errorData});  
     }   

@@ -12,7 +12,16 @@
 
 <!-- inline scripts related to this page -->
 <script type="text/javascript">
+   
+
     jQuery(function($) {
+      $( document ).ready(function() {
+         console.log( "ready!" );
+         $('body').attr('class', 'login-layout light-login');
+         $('#id-text2').attr('class', 'grey');
+         $('#id-company-text').attr('class', 'blue');
+      });
+
      $(document).on('click', '.toolbar a[data-target]', function(e) {
         e.preventDefault();
         var target = $(this).data('target');
