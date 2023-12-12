@@ -27,7 +27,7 @@
                         <%- include ../elements/flash.ejs %>  
                     <div class="col-xs-12 col-sm-6">
                         <div class=" ">  
-                            <form method="post" action="/admin/Users/add" enctype="multipart/form-data">
+                            <form method="post" action="<%=nodeAdminUrl%>/<%=controller%>/add" enctype="multipart/form-data">
                             <div class="widget-body">  
                                     <div class="widget-main">  
 
@@ -53,7 +53,8 @@
                                         <div class="row">
                                             <div class="col-md-offset-3 col-md-9">
                                                 <button class="btn btn-info" type="submit">
-                                                    <i class="ace-icon fa fa-check bigger-110"></i>  Submit  </button> 
+                                                    <i class="ace-icon fa fa-check bigger-110"></i>  Submit
+                                                </button> 
 
                                                 &nbsp; &nbsp; &nbsp;
 

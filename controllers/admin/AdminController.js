@@ -97,7 +97,7 @@ exports.login = login;
  *  Returns: json  
 */
 async function dashboard(req, res) {  
-
+    console.log("loged in")
     var action = 'login';
     res.set('content-type' , 'text/html; charset=mycharset'); 
     data = {}; LoginUser = {};errorData = {};
@@ -116,7 +116,7 @@ exports.dashboard = dashboard;
  *  Returns: json  
 */
 async function logout(req, res) {  
-      
+    console.log("logging out")  
     //res.set('content-type' , 'text/html; charset=mycharset'); 
     data = {}; LoginUser = {};errorData = {};
     if(req.session){

@@ -28,8 +28,8 @@ async function list(req, res) {
     //res.redirect(nodeAdminUrl+'/Users/add');
     //res.redirect(nodeAdminUrl+'/Users/list');
     //res.redirect(nodeAdminUrl+'/Users/list', {page_title:" List", data:allRecord, controller:controller, action:action, module_name:module_name});
-    res.render(nodeAdminUrl+'/'+controller+'/list', {page_title:" List", data:allRecord, controller:controller, action:action, module_name:module_name});
-
+    res.render('admin/'+controller+'/list',{page_title:"List", data:allRecord, controller:controller,action:action, module_name:module_name});
+    //res.render(nodeAdminUrl+'/'+controller+'/list', {page_title:" List", data:allRecord, controller:controller, action:action, module_name:module_name});
 };      
 exports.list = list;
  
@@ -184,7 +184,7 @@ async function add(req, res) {
             }      
         } 
     }   
-    //res.render('admin/'+controller+'/add',{page_title:page_title,data:data, errorData:errorData,controller:controller,action:action});    
+    res.render('admin/'+controller+'/add',{page_title:page_title,data:data, errorData:errorData,controller:controller,action:action});    
 };          
 exports.add = add; 
 

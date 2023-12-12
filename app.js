@@ -10,13 +10,13 @@ const bodyParser = require('body-parser');
 app.use(expressValidator());
 app.use(cors()); 
 app.use(fileUpload()); 
-
+console.log("I am here");
 global.connectPool = require('./config/db.js');    
-  
+console.log("I am here");  
 // Constants 
 //global.nodeSiteUrl = 'http://192.168.1.151/constructionApp/nodeApi/'; // node  
-global.nodeSiteUrl = 'http://127.0.0.1:3000'; // node  
-global.nodeAdminUrl = 'http://127.0.0.1:3000/admin'; // node  
+global.nodeSiteUrl = 'http://127.0.0.1:3001'; // node  
+global.nodeAdminUrl = 'http://127.0.0.1:3001/admin'; // node  
 global.siteTitle = 'TWON Admin';
 global.successStatus = 200;
 global.failStatus = 401; 
@@ -31,7 +31,7 @@ app.set('view engine', 'ejs');
 var path = require('path');
 app.set('views', path.join(__dirname, 'views'));  
 
-
+console.log("I am here");
 
 app.use(express.static(__dirname +'/public'));  
 var flash = require('express-flash-messages')
@@ -55,7 +55,7 @@ app.get('/', (req, res) => {
 
 var apiRouter = require('./routes/api');
 app.use('/', apiRouter); 
-var server = app.listen(3000, function () { 
+var server = app.listen(3001, function () { 
     console.log("Example app listening at http://192.168.1.151:%s", server.address().port);
 });       
 process.on('uncaughtException', function (err) { 
