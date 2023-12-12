@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
-
+require('dotenv').config()
+console.log(process.env.DB_URL)
 mongoose.Promise = global.Promise;
-global.url = 'mongodb+srv://abdulsittar72:2106010991As@cluster0.gsnbbwq.mongodb.net/test?retryWrites=true&w=majority'; 
+global.url =  process.env.DB_URL;
 // Connecting to the database
 mongoose.connect(url, {
     useNewUrlParser: true
@@ -10,4 +11,5 @@ mongoose.connect(url, {
 }).catch(err => {
     console.log('Could not connect to the database. Exiting now...', err);
     process.exit();
+    
 });

@@ -9,7 +9,7 @@ router.post('/admin/login', AdminController.login);
 router.get('/admin/login', AdminController.login);     
 router.get('/admin/Dashboard', requiredAuthentication, AdminController.dashboard);  
 router.get('/admin/logout', AdminController.logout);         
-
+ 
 /** Routes for users module  */ 
  router.get('/admin/Users/list',requiredAuthentication,  UsersController.list);     
  router.get('/admin/Users/edit/:id', requiredAuthentication, UsersController.edit);     

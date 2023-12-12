@@ -8,6 +8,7 @@
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
     "ejs": "^2.6.1",
     "express": "^4.17.1",
     "express-fileupload": "^1.1.4",
@@ -26,6 +27,6 @@
   "keywords": [
     "mongoadmin"
   ],
-  "author": "Rakesh Vishnoi",
+  "author": "Abdul",
   "license": "ISC"
 }
