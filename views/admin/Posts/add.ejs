@@ -32,42 +32,36 @@
                                     <div class="widget-main">  
 
                                     <div>
-                                        <label for="form-field-select-1">Username</label> 
-                                        <input type="text" name="username" value="<%=data.username%>" id="form-field-select-1" placeholder="Username" class="form-control">  
-                                        <span class="error"><%=errorData.username%></span> 
+                                        <label for="form-field-select-1">userId</label> 
+                                        <input type="text" name="userId" value="<%=data.userId%>" id="form-field-select-1" placeholder="userId" class="form-control">  
+                                        <span class="error"><%=errorData.userId%></span> 
                                     </div>  <br> 
 
                                     <div>
-                                        <label for="form-field-select-1"> Email </label> 
-                                        <input type="text" name="email" value="<%=data.email%>" id="form-field-select-1" placeholder="Email" class="form-control">  
-                                        <span class="error"><%=errorData.email%></span>  
-                                    </div>  <br>  
-
-                                    <div>
-                                        <label for="form-field-select-1"> Password </label> 
-                                        <input type="password" name="password" value="<%=data.password%>" id="form-field-select-1" placeholder="Passowrd" class="form-control">  
-                                        <span class="error"><%=errorData.password%></span>   
+                                        <label for="form-field-select-1"> desc </label> 
+                                        <input type="text" name="desc" value="<%=data.desc%>" id="form-field-select-1" placeholder="desc" class="form-control">  
+                                        <span class="error"><%=errorData.desc%></span>  
                                     </div>  <br> 
                                     
                                     <div>
-                                        <label for="form-field-select-1"> Profile Picture </label> 
-                                        <input type="file" name="profilePicture" id="form-field-select-1" class="form-control">  
-                                        <span class="error"><%=errorData.profilePicture%></span>  
-                                        <% if(data.profilePicture){  %>
-                                            <img style="width: 150px;" src="<%=nodeSiteUrl%>/upload/<%=data.profilePicture%>">  
+                                        <label for="form-field-select-1"> Picture </label> 
+                                        <input type="file" name="img" id="form-field-select-1" class="form-control">  
+                                        <span class="error"><%=errorData.img%></span>  
+                                        <% if(data.img){  %>
+                                            <img style="width: 150px;" src="<%=nodeSiteUrl%>/upload/<%=data.img%>">  
                                         <% } %>
                                     </div>  <br> 
 
                                     <div>
-                                        <label for="form-field-select-1">Followers</label> 
-                                        <input type="text" name="followers" value="<%=data.followers%>" id="form-field-select-1" placeholder="followers" class="form-control">  
-                                        <span class="error"><%=errorData.followers%></span> 
+                                        <label for="form-field-select-1">Likes</label> 
+                                        <input type="text" name="likes" value="<%=data.likes%>" id="form-field-select-1" placeholder="likes" class="form-control">  
+                                        <span class="error"><%=errorData.likes%></span> 
                                     </div>  <br>
 
                                     <div>
-                                        <label for="form-field-select-1">Followings</label> 
-                                        <input type="text" name="followings" value="<%=data.followings%>" id="form-field-select-1" placeholder="followings" class="form-control">  
-                                        <span class="error"><%=errorData.followings%></span> 
+                                        <label for="form-field-select-1">Comments</label> 
+                                        <input type="text" name="comments" value="<%=data.comments%>" id="form-field-select-1" placeholder="comments" class="form-control">  
+                                        <span class="error"><%=errorData.comments%></span> 
                                     </div>  <br>
 
 
